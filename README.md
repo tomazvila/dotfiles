@@ -32,3 +32,10 @@ Copy key to remote server:
 ssh-copy-id remote_user@remote_IP
 ```
 
+## Ansible
+
+### Provide inventory file
+
+```
+ansible -i inventory.yaml -m ping demo_server_local
+```
