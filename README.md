@@ -39,3 +39,36 @@ ssh-copy-id remote_user@remote_IP
 ```
 ansible -i inventory.yaml -m ping demo_server_local
 ```
+
+### Input password to use sudo priveliges
+
+```
+ansible-playbook myplaybook.yaml --ask-become-pass
+```
+
+or
+
+```
+ansible-playbook myplaybook.yaml -K
+```
+
+#### Other stuff
+
+ - `--become`, `-b` – This allows you to run the task as a root user without prompting for a password.
+ - `--become-user=BECOME_USER` – It allows you to run tasks as another user.
+
+### Run simple bash command with ansible
+
+```
+ansible -a "df -Th" all
+```
+
+### Managing users
+
+Just use user module. TODO implement playbook to create one user to rule them all.
+
+### Install zsh example
+
+```
+ansible-playbook -i ansible/inventory.yaml -l demo_server_remote ansible/playbooks/install-zsh.yaml -K
+```
