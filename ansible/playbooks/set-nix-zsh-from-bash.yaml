@@ -1,6 +1,0 @@
----
-- hosts: all
-  become: true
-  tasks:
-    - name: Set zsh from nix
-
