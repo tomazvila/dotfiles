@@ -1,0 +1,18 @@
+---
+# usage:
+# ansible-playbook playbook.yml -l server1 -u sammy
+- hosts: all
+  become: true
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      apt:
+        pkg:
+          - zsh
+        state: latest
+        update_cache: true
