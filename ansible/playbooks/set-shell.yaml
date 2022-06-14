@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: set shell
+    ansible.builtin.user:
+      name: "{{user}}"
+      shell: "{{shell}}"

@@ -72,3 +72,9 @@ Just use user module. TODO implement playbook to create one user to rule them al
 ```
 ansible-playbook -i ansible/inventory.yaml -l demo_server_remote ansible/playbooks/install-zsh.yaml -K
 ```
+
+### Pass variable to playbook
+
+```
+ansible-playbook -i ansible/inventory.yaml -l demo_server_local ansible/playbooks/set-shell.yaml -e "user=username shell=/bin/bash" -K
+```
