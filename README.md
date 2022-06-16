@@ -78,3 +78,7 @@ ansible-playbook -i ansible/inventory.yaml -l demo_server_remote ansible/playboo
 ```
 ansible-playbook -i ansible/inventory.yaml -l demo_server_local ansible/playbooks/set-shell.yaml -e "user=username shell=/bin/bash" -K
 ```
+
+## TODO
+
+- [ ] create ansible or nix to install qemu and kvm
