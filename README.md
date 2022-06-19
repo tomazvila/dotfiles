@@ -78,6 +78,61 @@ ansible-playbook -i ansible/inventory.yaml -l demo_server_remote ansible/playboo
 ```
 ansible-playbook -i ansible/inventory.yaml -l demo_server_local ansible/playbooks/set-shell.yaml -e "user=username shell=/bin/bash" -K
 ```
+
+## Testing with vagrant
+
+Create this file:
+
+```
+Vagrant.configure("2") do |config|
+    config.vm.box = "alvistack/ubuntu-22.04"
+end
+```
+
+Run this command:
+
+```bash
+vagrant init
+```
+
+If ssh key doesn't exist issue this command:
+```bash
+ssh-keygen -t rsa
+```
+
+If ssh-key was added issue this command:
+```bash
+ssh-keygen -f "/home/user/.ssh/known_hosts" -R "[127.0.0.1]:2222"
+```
+
+Then issue this command:
+```bash
+ssh-copy-id -p 2222 vagrant@127.0.0.1
+```
+
+Add this to `~/.ssh/config`:
+```
+Host vagrant
+        HostName 127.0.0.1
+        User vagrant
+        Port 2222
+```
+
+Finaly spin up vm with:
+```bash
+vagrant up
+```
+
+Test ansible scripts with command like:
+```bash
+ansible-playbook -i ansible/inventory.yaml -l vagrant ansible/playbooks/create-user.yaml -K
+```
+
+To get clean state again destroy vm with:
+```bash
+vagrant destroy
+```
+
 ## EndGame
 
 1. [ ] Setup user on target machine
@@ -88,4 +143,4 @@ ansible-playbook -i ansible/inventory.yaml -l demo_server_local ansible/playbook
     - [ ] tmux
     - [ ] glew
     - [ ] ripgrep
-    - [ ] ???
+    - [ ] git
