@@ -32,9 +32,36 @@ ansible role to install nix
 ### Install manually
 
 This
-```
+```bash
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
+
+Then
+```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz home-manager
+nix-channel --update
+```
+
+Add this to shell:
+```bash
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+```
+
+Install **home-manager**:
+```bash
+nix-shell '<home-manager>' -A install
+```
+
+Source current shell:
+```
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+```
+
+> **_NOTE:_**  Somewhy installation doesn't work with custom created user
+
+## home-manager
 
 ## Ansible
 
