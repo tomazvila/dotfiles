@@ -78,7 +78,14 @@ ansible-playbook -i ansible/inventory.yaml -l demo_server_remote ansible/playboo
 ```
 ansible-playbook -i ansible/inventory.yaml -l demo_server_local ansible/playbooks/set-shell.yaml -e "user=username shell=/bin/bash" -K
 ```
+## EndGame
 
-## TODO
-
-- [ ] create ansible or nix to install qemu and kvm
+1. [ ] Setup user on target machine
+2. [ ] Install docker
+3. [ ] Install nix and its derivatives
+4. [ ] Install nix home-manager and use it to install and setup
+    - [ ] neovim
+    - [ ] tmux
+    - [ ] glew
+    - [ ] ripgrep
+    - [ ] ???
