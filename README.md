@@ -16,16 +16,18 @@ Set user password:
 sudo passwd user
 ```
 
-## Ssh
+## Install docker
 
-Generate ssh key:
-```
-ssh-keygen -t rsa
+Use `install-docker.yaml` playbook like so:
+```bash
+ansible-playbook -i ansible/inventory.yaml -l targetmachine ansible/playbooks/install-docker.yaml -K
 ```
 
-Copy key to remote server:
-```
-ssh-copy-id remote_user@remote_IP
+## Install Nix
+
+Use [makkus](https://github.com/freckles-io/freckles-io.install-nix) created nix install ansible role like so:
+```bash
+ansible-playbook -i ansible/inventory.yaml -l targetmachine ansible/playbooks/install-nix.yaml -K
 ```
 
 ## Ansible
@@ -58,10 +60,6 @@ ansible-playbook myplaybook.yaml -K
 ```
 ansible -a "df -Th" all
 ```
-
-### Managing users
-
-Just use user module. TODO implement playbook to create one user to rule them all.
 
 ### Install zsh example
 
@@ -134,7 +132,7 @@ vagrant destroy
 ## EndGame
 
 1. [x] Setup user on target machine
-2. [ ] Install docker
+2. [x] Install docker
 3. [ ] Install nix and its derivatives
 4. [ ] Install nix home-manager and use it to install and setup
     - [ ] neovim
