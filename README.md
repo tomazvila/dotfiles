@@ -25,9 +25,18 @@ ansible-playbook -i ansible/inventory.yaml -l targetmachine ansible/playbooks/in
 
 ## Install Nix
 
+### Does not work
+
 Use [makkus](https://github.com/freckles-io/freckles-io.install-nix) created nix install ansible role like so:
 ```bash
 ansible-playbook -i ansible/inventory.yaml -l targetmachine ansible/playbooks/install-nix.yaml -K
+```
+
+### Install manually
+
+This
+```
+sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
 ## Ansible
