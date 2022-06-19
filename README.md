@@ -4,20 +4,16 @@ Goal of this respository is to replicate easily and smoothly the setup of workst
 
 ## User
 
-Create user:
+Create user: To create user use `create-user.yaml` playbook with this command:
+```bash
+ansible-playbook -i ansible/inventory.yaml -l targetmachine ansible/playbooks/create-user.yaml -K
+```
 
-```
-sudo useradd -m username
-```
+Ssh to target machine
 
 Set user password:
 ```
-sudo passwd username
-```
-
-Add user to superusers group:
-```
-sudo usermode -aG sudo username
+sudo passwd user
 ```
 
 ## Ssh
@@ -81,7 +77,7 @@ ansible-playbook -i ansible/inventory.yaml -l demo_server_local ansible/playbook
 
 ## Testing with vagrant
 
-Create this file:
+Create this file if it doesn't exist already in new directory:
 
 ```
 Vagrant.configure("2") do |config|
@@ -89,7 +85,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-Run this command:
+Run this command from the same directory where the vagrant file was created:
 
 ```bash
 vagrant init
@@ -123,6 +119,8 @@ Finaly spin up vm with:
 vagrant up
 ```
 
+Now you can ssh to vm with just: `ssh vagrant`
+
 Test ansible scripts with command like:
 ```bash
 ansible-playbook -i ansible/inventory.yaml -l vagrant ansible/playbooks/create-user.yaml -K
@@ -135,7 +133,7 @@ vagrant destroy
 
 ## EndGame
 
-1. [ ] Setup user on target machine
+1. [x] Setup user on target machine
 2. [ ] Install docker
 3. [ ] Install nix and its derivatives
 4. [ ] Install nix home-manager and use it to install and setup
