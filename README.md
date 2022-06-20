@@ -156,7 +156,7 @@ ssh-copy-id -p 2222 vagrant@127.0.0.1
 
 Add this to `~/.ssh/config`:
 
-```
+```text
 Host vagrant
         HostName 127.0.0.1
         User vagrant
