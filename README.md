@@ -177,6 +177,10 @@ To get clean state again destroy vm with:
 vagrant destroy
 ```
 
+## TODO
+
+- [ ] Fix password for user creation with ansible script
+
 ## EndGame
 
 1. [x] Setup user on target machine
