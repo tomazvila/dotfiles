@@ -131,7 +131,10 @@ If ssh-key was added issue this command:
 ```bash
 ssh-keygen -f "/home/user/.ssh/known_hosts" -R "[127.0.0.1]:2222"
 ```
-
+Spin up vm with:
+```bash
+vagrant up
+```
 Then issue this command:
 ```bash
 ssh-copy-id -p 2222 vagrant@127.0.0.1
@@ -145,16 +148,11 @@ Host vagrant
         Port 2222
 ```
 
-Finaly spin up vm with:
-```bash
-vagrant up
-```
-
 Now you can ssh to vm with just: `ssh vagrant`
 
 Test ansible scripts with command like:
 ```bash
-ansible-playbook -i ansible/inventory.yaml -l vagrant ansible/playbooks/create-user.yaml -K
+ansible-playbook -i ansible/inventory/inventory.yaml -l vagrant ansible/playbooks/create-user.yaml -K
 ```
 
 To get clean state again destroy vm with:
