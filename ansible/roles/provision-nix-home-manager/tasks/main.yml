@@ -27,17 +27,19 @@
 
 - name: Run nix installer
   shell: /tmp/nix_install.sh
+  become: true
+  become_user: user
   environment:
     USER: "user"
     ALLOW_PREEXISTING_INSTALLATION: "x"
 
-- name: Create soft link to profile
-  ansible.builtin.file:
-    src: /nix/var/nix/profiles/per-user/user/profile
-    dest: /home/user/.nix-profile
-    owner: user
-    group: user
-    state: link
+# - name: Create soft link to profile
+#   ansible.builtin.file:
+#     src: /nix/var/nix/profiles/per-user/user/profile
+#     dest: /home/user/.nix-profile
+#     owner: user
+#     group: user
+#     state: link
 
 - name: Set variables
   shell: /home/user/.nix-profile/etc/profile.d/nix.sh
