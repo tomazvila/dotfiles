@@ -34,7 +34,7 @@ ansible role to install nix
 
 ### Install manually
 
-This
+Install nix:
 
 ```bash
 sh <(curl -L https://nixos.org/nix/install) --daemon
@@ -180,12 +180,13 @@ vagrant destroy
 ## TODO
 
 - [ ] Fix password for user creation with ansible script
+- [ ] Provision nix configuration with ansible
 
 ## EndGame
 
 1. [x] Setup user on target machine
 2. [x] Install docker
-3. [ ] Install nix and its derivatives
+3. [x] Install nix and its derivatives
 4. [ ] Install nix home-manager and use it to install and setup
     - [ ] neovim
     - [ ] tmux
