@@ -30,3 +30,6 @@
   environment:
     USER: "user"
     ALLOW_PREEXISTING_INSTALLATION: "x"
+
+- name: Set variables
+  shell: /home/user/.nix-profile/etc/profile.d/nix.sh
