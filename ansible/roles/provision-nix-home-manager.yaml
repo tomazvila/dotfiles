@@ -1,0 +1,6 @@
+---
+- name: Provision Nix and home-manager
+  hosts: all
+  remote_user: user
+  roles:
+    - provision-nix-home-manager
