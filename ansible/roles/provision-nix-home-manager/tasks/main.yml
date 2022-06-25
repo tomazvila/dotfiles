@@ -19,6 +19,12 @@
     name: nixbld
     state: present
 
+- name: Add user to nixbld group
+  user:
+    name: user
+    groups: nixbld
+    append: yes
+
 - name: Run nix installer
   shell: /tmp/nix_install.sh
   args:
