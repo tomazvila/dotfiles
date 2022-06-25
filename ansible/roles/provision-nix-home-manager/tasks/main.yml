@@ -31,12 +31,6 @@
     USER: "user"
     ALLOW_PREEXISTING_INSTALLATION: "x"
 
-- name: Set variables
-  shell: /home/user/.nix-profile/etc/profile.d/nix.sh
-  environment:
-    USER: "user"
-    HOME: "/home/user/"
-
 - name: Create soft link to profile
   ansible.builtin.file:
     src: /nix/var/nix/profiles/per-user/user/profile
@@ -44,3 +38,9 @@
     owner: user
     group: user
     state: link
+
+- name: Set variables
+  shell: /home/user/.nix-profile/etc/profile.d/nix.sh
+  environment:
+    USER: "user"
+    HOME: "/home/user/"
