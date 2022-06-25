@@ -27,8 +27,6 @@
 
 - name: Run nix installer
   shell: /tmp/nix_install.sh
-  args:
-    creates: "/home/user/.nix-profile/bin/nix-env"
   environment:
     USER: "user"
     ALLOW_PREEXISTING_INSTALLATION: "x"
