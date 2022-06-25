@@ -8,6 +8,12 @@
     group: user
     mode: '755'
 
-- name: Install nix
-  ansible.builtin.shell:
-    cmd: sh <(curl -L https://nixos.org/nix/install) --no-daemon
+- name: Download Nix installer script
+  get_url:
+    url: https://nixos.org/nix/install
+    dest: /tmp/nix_install.sh
+    mode: 0755
+
+# - name: Install nix
+#   ansible.builtin.shell:
+#     cmd: sh <(curl -L https://nixos.org/nix/install) --no-daemon
