@@ -14,6 +14,11 @@
     dest: /tmp/nix_install.sh
     mode: 0755
 
+- name: Ensure group "nixbld" exists
+  ansible.builtin.group:
+    name: nixbld
+    state: present
+
 - name: Run nix installer
   shell: /tmp/nix_install.sh
   args:
