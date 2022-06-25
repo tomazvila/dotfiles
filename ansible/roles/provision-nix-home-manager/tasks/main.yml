@@ -40,7 +40,7 @@
 - name: Create soft link to profile
   ansible.builtin.file:
   src: /nix/var/nix/profiles/per-user/user/profile
-    dest: /home/user/.nix-profile
-    owner: user
-    group: user
-    state: link
+  dest: /home/user/.nix-profile
+  owner: user
+  group: user
+  state: link
