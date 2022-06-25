@@ -1,0 +1,11 @@
+---
+# tasks file for provision-nix-home-manager
+- name: Create nix directories for nix
+  ansible.builtin.file:
+    path: /nix
+    owner: user
+    group: user
+
+- name: Install nix
+  ansible.builtin.shell:
+    cmd: sh <(curl -L https://nixos.org/nix/install) --no-daemon
