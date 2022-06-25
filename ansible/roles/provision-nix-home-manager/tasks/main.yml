@@ -14,6 +14,10 @@
     dest: /tmp/nix_install.sh
     mode: 0755
 
-# - name: Install nix
-#   ansible.builtin.shell:
-#     cmd: sh <(curl -L https://nixos.org/nix/install) --no-daemon
+- name: Run nix installer
+  shell: /tmp/nix_install.sh
+  args:
+    creates: "/home/user/.nix-profile/bin/nix-env"
+  environment:
+    USER: "user"
+    ALLOW_PREEXISTING_INSTALLATION: "x"
