@@ -3,8 +3,10 @@
 - name: Create nix directories for nix
   ansible.builtin.file:
     path: /nix
+    state: directory
     owner: user
     group: user
+    mode: '755'
 
 - name: Install nix
   ansible.builtin.shell:
