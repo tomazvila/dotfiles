@@ -6,7 +6,7 @@
     state: directory
     owner: user
     group: user
-    mode: '755'
+    mode: '0755'
 
 - name: Download Nix installer script
   get_url:
