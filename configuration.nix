@@ -1,16 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     #/etc/nixos/hardware-configuration.nix
     ./hardware-configuration.nix
   ];
+  #enable the service from the nixosModule
+  services.vscode-server.enable = true;
 
-  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -38,12 +40,11 @@
     xkbVariant = "us";
   };
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [];
   };
 
@@ -55,9 +56,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	git
-	neovim
-	curl
+    git
+    neovim
+    curl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -73,7 +74,7 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-   # permitRootLogin = "no";
+    # permitRootLogin = "no";
   };
 
   environment.variables.EDITOR = "nvim";
@@ -88,5 +89,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }
