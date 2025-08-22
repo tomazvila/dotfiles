@@ -1,7 +1,0 @@
----
-- name: Provision Nix and home-manager
-  hosts: all
-  remote_user: vagrant
-  become: true
-  roles:
-    - provision-nix-home-manager
