@@ -26,9 +26,11 @@
     ];
     casks = [
       "anki"
+      "discord"
       "ghostty"
       "nikitabobko/tap/aerospace"
       "obsidian"
+      "telegram"
     ];
   };
 }
