@@ -1,4 +1,8 @@
 { pkgs, neovimPackage, ... }: {
+  imports = [
+    ./tmux
+  ];
+
   home.stateVersion = "24.11";
 
   home.packages = [
