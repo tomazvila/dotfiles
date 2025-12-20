@@ -21,8 +21,14 @@
       autoUpdate = true;
       cleanup = "zap";
     };
+    taps = [
+      "nikitabobko/tap"
+    ];
     casks = [
+      "anki"
       "ghostty"
+      "nikitabobko/tap/aerospace"
+      "obsidian"
     ];
   };
 }
