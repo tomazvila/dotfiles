@@ -39,6 +39,9 @@
     ];
 
     extraConfig = ''
+      # Send C-a to shell with C-a C-a (for beginning of line)
+      bind C-a send-prefix
+
       # True color support
       set -ag terminal-overrides ",xterm-256color:RGB"
 
