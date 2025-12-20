@@ -69,6 +69,9 @@
 
       # Reload config
       bind r source-file ~/.config/tmux/tmux.conf \; display "Config reloaded!"
+
+      # Override rename to also disable auto-rename for that window
+      bind , command-prompt -I "#W" "rename-window '%%'; set-window-option automatic-rename off"
     '';
   };
 }
