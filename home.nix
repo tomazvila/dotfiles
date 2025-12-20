@@ -31,6 +31,7 @@
 
   programs.ghostty = {
     enable = true;
+    package = null;  # Installed via Homebrew, not nix
     settings = {
       command = "tmux new-session -A -s main";
     };
