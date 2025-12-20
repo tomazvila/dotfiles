@@ -10,6 +10,7 @@
     pkgs.git
     pkgs.ripgrep
     pkgs.nodejs_22
+    pkgs.tree
     neovimPackage
   ];
 

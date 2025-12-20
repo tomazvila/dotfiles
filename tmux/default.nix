@@ -45,9 +45,12 @@
       # True color support
       set -ag terminal-overrides ",xterm-256color:RGB"
 
-      # Split panes with | and -
+      # Split panes with | and - (preserve current path)
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
+      # Also override default split bindings to preserve path
+      bind % split-window -h -c "#{pane_current_path}"
+      bind '"' split-window -v -c "#{pane_current_path}"
 
       # Vi-style pane navigation
       bind h select-pane -L
