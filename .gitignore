@@ -1,0 +1,6 @@
+# Nix build results
+result
+result-*
+
+# macOS
+.DS_Store
