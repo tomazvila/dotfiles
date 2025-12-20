@@ -28,4 +28,11 @@
       export PATH="$HOME/.npm-global/bin:$PATH"
     '';
   };
+
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      command = "tmux new-session -A -s main";
+    };
+  };
 }
