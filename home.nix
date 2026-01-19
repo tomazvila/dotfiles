@@ -33,7 +33,7 @@
     enable = true;
     package = null;  # Installed via Homebrew, not nix
     settings = {
-      command = "tmux new-session -A -s main";
+      command = "/bin/zsh -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'";
     };
   };
 }

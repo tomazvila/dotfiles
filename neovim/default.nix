@@ -23,7 +23,8 @@
     softtabstop = 2;
     expandtab = true;
     smartindent = true;
-    wrap = false;
+    wrap = true;
+    linebreak = true;
     swapfile = false;
     backup = false;
     undofile = true;
