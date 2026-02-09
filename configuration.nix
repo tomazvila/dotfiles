@@ -29,9 +29,11 @@
     casks = [
       "anki"
       "discord"
+      "docker"
       "ghostty"
       "nikitabobko/tap/aerospace"
       "obsidian"
+      "steam"
       "telegram"
     ];
   };

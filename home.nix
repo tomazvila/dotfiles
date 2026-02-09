@@ -26,6 +26,8 @@
     initContent = ''
       export NPM_CONFIG_PREFIX="$HOME/.npm-global"
       export PATH="$HOME/.npm-global/bin:$PATH"
+      export PATH="$HOME/.opencode/bin:$PATH"
+      export PATH="$HOME/.local/bin:$PATH"
     '';
   };
 

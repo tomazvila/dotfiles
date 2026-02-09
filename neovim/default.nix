@@ -193,6 +193,7 @@
       scala
       haskell
       rust
+      go gomod gosum
       markdown markdown_inline
       yaml toml
       bash
@@ -223,6 +224,7 @@
       cssls.enable = true;
       jsonls.enable = true;
       yamlls.enable = true;
+      gopls.enable = true;
     };
   };
 
@@ -354,6 +356,7 @@
   plugins.dap-ui.enable = true;
   plugins.dap-virtual-text.enable = true;
   plugins.dap-python.enable = true;
+  plugins.dap-go.enable = true;
   plugins.nix.enable = true;
   plugins.web-devicons.enable = true;
   plugins.lazygit.enable = true;
