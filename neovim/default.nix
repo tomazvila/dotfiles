@@ -261,6 +261,34 @@
   # Telescope - Fuzzy finder
   plugins.telescope = {
     enable = true;
+    settings.defaults.file_ignore_patterns = [
+      # JavaScript / TypeScript
+      "node_modules/"
+      "%.next/"
+      "dist/"
+      # Haskell
+      "dist%-newstyle/"
+      "%.stack%-work/"
+      "%.cabal%-sandbox/"
+      # Scala
+      "%.metals/"
+      "%.bloop/"
+      "%.bsp/"
+      "target/"
+      # Rust
+      "target/debug/"
+      "target/release/"
+      # Python
+      "__pycache__/"
+      "%.venv/"
+      "%.mypy_cache/"
+      "%.pytest_cache/"
+      # Go
+      "vendor/"
+      # General
+      "%.git/"
+      "result/"
+    ];
     extensions = {
       fzf-native.enable = true;
       ui-select.enable = true;
