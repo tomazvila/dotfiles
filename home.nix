@@ -9,6 +9,11 @@
   home.packages = [
     pkgs.git
     pkgs.ripgrep
+    pkgs.bat
+    pkgs.difftastic
+    pkgs.jq
+    pkgs.hyperfine
+    pkgs.procs
     pkgs.nodejs_22
     pkgs.tree
     neovimPackage

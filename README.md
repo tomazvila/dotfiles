@@ -157,7 +157,7 @@ homebrew.casks = [
 
 ### home-manager (`home.nix`)
 
-- User packages: git, ripgrep, nodejs, neovim
+- User packages: git, ripgrep, bat, difftastic, jq, hyperfine, procs, nodejs, neovim
 - Git configuration
 - Zsh with completions and custom init
 
@@ -171,6 +171,102 @@ homebrew.casks = [
 | **Plugins** | Treesitter, Telescope, Neo-tree, Lualine, Which-key, Gitsigns, DAP, and more |
 
 See `neovim/README.md` for full keybindings reference.
+
+## CLI Tools
+
+Modern replacements for traditional Unix utilities, installed via `home.nix`.
+
+### bat — A better `cat`
+
+Syntax-highlighted file viewer with line numbers, git integration, and automatic paging.
+
+**When to use:** Anytime you'd use `cat` or `less` to read files. Especially useful for code files.
+
+```bash
+bat file.py                    # View file with syntax highlighting
+bat --diff file.py             # Show git changes inline
+bat -l json data.txt           # Force a specific syntax (json)
+bat -p file.py                 # Plain output (no line numbers/header), useful for piping
+bat src/*.rs                   # View multiple files
+```
+
+### ripgrep (`rg`) — A better `grep`
+
+Extremely fast recursive text search. Respects `.gitignore`, skips binary files automatically.
+
+**When to use:** Searching for text across a codebase. Replaces `grep -r`.
+
+```bash
+rg "TODO"                      # Search current directory recursively
+rg "fn main" --type rust       # Search only Rust files
+rg "error" --glob "*.log"      # Search only log files
+rg "pattern" -C 3              # Show 3 lines of context around matches
+rg "class \w+" -o              # Show only the matching part
+rg "old_name" --files-with-matches  # List files containing matches
+```
+
+### difftastic (`difft`) — Structural diffs
+
+A syntax-aware diff tool. Understands code structure so it shows meaningful changes instead of line-by-line noise.
+
+**When to use:** Reviewing code changes, especially refactors where code moved around. Use as a git difftool.
+
+```bash
+difft file_old.py file_new.py  # Compare two files
+difft dir_a/ dir_b/            # Compare two directories
+
+# Use as git diff tool (one-off)
+GIT_EXTERNAL_DIFF=difft git diff
+
+# Or configure permanently
+git config --global diff.external difft
+```
+
+### jq — JSON processor
+
+Command-line JSON parser, filter, and transformer.
+
+**When to use:** Working with JSON from APIs, config files, or log output. Anytime you need to extract, filter, or reshape JSON data.
+
+```bash
+cat data.json | jq '.'                  # Pretty-print JSON
+curl -s api/endpoint | jq '.name'       # Extract a field
+jq '.users[] | .email' data.json        # Extract nested array field
+jq '.items | length' data.json          # Count array items
+jq 'select(.age > 30)' data.json        # Filter objects
+jq '{name, email}' data.json            # Pick specific fields
+jq -r '.url' data.json                  # Raw output (no quotes)
+```
+
+### hyperfine — CLI benchmarking
+
+Statistical benchmarking for shell commands. Runs multiple iterations with warmup and reports mean, min, max, and standard deviation.
+
+**When to use:** Comparing performance of commands, scripts, or different implementations. Replaces unreliable single-run `time` measurements.
+
+```bash
+hyperfine 'sleep 0.3'                           # Benchmark a single command
+hyperfine 'rg pattern' 'grep -r pattern'         # Compare two commands
+hyperfine --warmup 3 'my-program'                # Run 3 warmup iterations first
+hyperfine --min-runs 20 'my-script.sh'           # Run at least 20 iterations
+hyperfine -p 'make clean' 'make build'           # Run preparation command before each
+hyperfine --export-markdown bench.md 'cmd'       # Export results as markdown table
+```
+
+### procs — A better `ps`
+
+Modern process viewer with color output, keyword search, tree view, and human-readable formatting.
+
+**When to use:** Finding and inspecting running processes. Replaces `ps aux | grep`.
+
+```bash
+procs                          # Show all processes (colored, formatted)
+procs node                     # Search for processes by keyword
+procs --tree                   # Show process tree
+procs --sortd cpu              # Sort by CPU usage (descending)
+procs --sortd mem              # Sort by memory usage (descending)
+procs -w 5                     # Watch mode, refresh every 5 seconds
+```
 
 ## Troubleshooting
 
