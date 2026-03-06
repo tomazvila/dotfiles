@@ -287,6 +287,7 @@
       "vendor/"
       # General
       "%.git/"
+      "build/"
       "result/"
     ];
     extensions = {
