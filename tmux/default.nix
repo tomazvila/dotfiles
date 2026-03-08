@@ -67,6 +67,11 @@
       # New window in current path
       bind c new-window -c "#{pane_current_path}"
 
+      # Vi copy mode bindings
+      bind -T copy-mode-vi v send-keys -X begin-selection
+      bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+      bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+
       # Reload config
       bind r source-file ~/.config/tmux/tmux.conf \; display "Config reloaded!"
 
