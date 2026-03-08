@@ -14,17 +14,7 @@
     sensibleOnTop = true;
 
     plugins = with pkgs.tmuxPlugins; [
-      # Theme (must come before resurrect/continuum)
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavor 'mocha'
-          set -g @catppuccin_window_current_text "#{window_name}"
-          set -g @catppuccin_status_modules_right "session date_time"
-          set -g @catppuccin_date_time_text "%H:%M"
-        '';
-      }
-      # Session persistence
+      # Session persistence (loaded before catppuccin so theme status bar wins)
       {
         plugin = resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
@@ -35,6 +25,21 @@
           set -g @continuum-restore 'on'
           set -g @continuum-save-interval '10'
         '';
+      }
+      # Theme (loaded after continuum so it controls status-right)
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavor 'mocha'
+          set -g @catppuccin_window_current_text "#{window_name}"
+          set -g @catppuccin_status_modules_right "session battery date_time"
+          set -g @catppuccin_date_time_text "%H:%M"
+        '';
+      }
+      # Battery (loaded after catppuccin so the theme can style it)
+      {
+        plugin = battery;
+        extraConfig = "";
       }
     ];
 
