@@ -28,11 +28,14 @@
     ];
     casks = [
       "anki"
+      "dbeaver-community"
       "discord"
-      "docker"
+      "docker-desktop"
       "ghostty"
       "nikitabobko/tap/aerospace"
       "obsidian"
+      "openmtp"
+      "pritunl"
       "steam"
       "telegram"
     ];
