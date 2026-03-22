@@ -14,7 +14,7 @@
     sensibleOnTop = true;
 
     plugins = with pkgs.tmuxPlugins; [
-      # Session persistence (loaded before catppuccin so theme status bar wins)
+      # Session persistence
       {
         plugin = resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
@@ -26,20 +26,17 @@
           set -g @continuum-save-interval '10'
         '';
       }
-      # Theme (loaded after continuum so it controls status-right)
+      # Theme
       {
-        plugin = catppuccin;
+        plugin = tokyo-night-tmux;
         extraConfig = ''
-          set -g @catppuccin_flavor 'mocha'
-          set -g @catppuccin_window_current_text "#{window_name}"
-          set -g @catppuccin_status_modules_right "session battery date_time"
-          set -g @catppuccin_date_time_text "%H:%M"
+          set -g @tokyo-night-tmux_show_battery_widget 1
+          set -g @tokyo-night-tmux_show_path 1
+          set -g @tokyo-night-tmux_path_format relative
+          set -g @tokyo-night-tmux_show_datetime 1
+          set -g @tokyo-night-tmux_date_format YMD
+          set -g @tokyo-night-tmux_time_format 24H
         '';
-      }
-      # Battery (loaded after catppuccin so the theme can style it)
-      {
-        plugin = battery;
-        extraConfig = "";
       }
     ];
 
