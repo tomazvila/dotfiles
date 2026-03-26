@@ -27,6 +27,9 @@
       "nikitabobko/tap"
     ];
     casks = [
+      "font-jetbrains-mono-nerd-font"
+      "font-noto-sans-symbols-2"
+      "codex"
       "anki"
       "dbeaver-community"
       "discord"
