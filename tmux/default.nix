@@ -1,5 +1,12 @@
 { pkgs, ... }:
 
+let
+  tokyoNight = pkgs.tmuxPlugins.tokyo-night-tmux;
+  cnScript = "${tokyoNight}/share/tmux-plugins/tokyo-night-tmux/src/custom-number.sh";
+  # Conditional color based on window state:
+  #   silent (idle/waiting for input) = green, active (producing output) = yellow, default = foreground
+  stateColor = "#{?#{window_silence_flag},#[fg=#73daca],#{?#{window_activity_flag},#[fg=#e0af68],#[fg=#a9b1d6]}}";
+in
 {
   programs.tmux = {
     enable = true;
@@ -36,6 +43,7 @@
           set -g @tokyo-night-tmux_show_datetime 1
           set -g @tokyo-night-tmux_date_format YMD
           set -g @tokyo-night-tmux_time_format 24H
+          set -g @tokyo-night-tmux_show_git 0
         '';
       }
     ];
@@ -74,11 +82,29 @@
       bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
       bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
 
+      # Cycle to last window
+      bind Tab last-window
+
       # Reload config
       bind r source-file ~/.config/tmux/tmux.conf \; display "Config reloaded!"
 
       # Override rename to also disable auto-rename for that window
       bind , command-prompt -I "#W" "rename-window '%%'; set-window-option automatic-rename off"
+
+      # Dynamic window status colors based on activity/silence
+      # Yellow = process producing output (working), Green = no output for 10s (idle/waiting)
+      set -g monitor-activity on
+      set -g monitor-silence 10
+      set -g visual-activity off
+      set -g visual-silence off
+      set -g activity-action any
+      set -g silence-action any
+
+      # Disable theme's activity style so our format conditionals control the color
+      set -g window-status-activity-style default
+
+      # Override window-status-format with state-aware colors
+      set -g window-status-format "${stateColor}#[bg=#1A1B26,nobold,noitalics,nounderscore,nodim] #{?#{==:#{pane_current_command},ssh},󰣀 , }${stateColor}#[bg=#1A1B26,nobold,noitalics,nounderscore,nodim]#(${cnScript} #I digital)#W#[nobold,dim]#{?window_zoomed_flag, #(${cnScript} #P dsquare), #(${cnScript} #P hsquare)}${stateColor}#{?window_last_flag,󰁯  , }"
     '';
   };
 }

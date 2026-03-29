@@ -35,6 +35,7 @@
       "discord"
       "docker-desktop"
       "ghostty"
+      "libreoffice"
       "nikitabobko/tap/aerospace"
       "obsidian"
       "openmtp"

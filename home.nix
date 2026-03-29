@@ -28,11 +28,15 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    shellAliases = {
+      ll = "ls -l";
+    };
     initContent = ''
       export NPM_CONFIG_PREFIX="$HOME/.npm-global"
       export PATH="$HOME/.npm-global/bin:$PATH"
       export PATH="$HOME/.opencode/bin:$PATH"
       export PATH="$HOME/.local/bin:$PATH"
+      export PATH="/opt/homebrew/bin:$PATH"
     '';
   };
 
@@ -40,6 +44,8 @@
     enable = true;
     package = null;  # Installed via Homebrew, not nix
     settings = {
+      font-family = "JetBrainsMono Nerd Font";
+      window-padding-y = "2,0";
       command = "/bin/zsh -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'";
     };
   };
