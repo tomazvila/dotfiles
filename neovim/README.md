@@ -140,13 +140,15 @@ Inside Telescope:
 - `<C-v>` - Open in vertical split
 - `<Esc>` - Close
 
-### Git (Telescope)
+### Git
 
 | Key | Action |
 |-----|--------|
-| `<Space>gc` | Git commits |
-| `<Space>gb` | Git branches |
-| `<Space>gs` | Git status |
+| `<Space>gc` | Git commits (Telescope) |
+| `<Space>gb` | Git branches (Telescope) |
+| `<Space>gs` | Git status (Telescope) |
+| `<Space>gB` | Git blame current line |
+| `<Space>gt` | Toggle inline line blame |
 
 ### LSP (Language Server)
 

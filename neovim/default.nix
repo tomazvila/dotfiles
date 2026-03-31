@@ -162,6 +162,10 @@
     { mode = "n"; key = "<leader>dl"; action = "<cmd>lua require('dap').run_last()<CR>"; options.desc = "Run last"; }
     { mode = "n"; key = "<leader>dt"; action = "<cmd>lua require('dapui').toggle()<CR>"; options.desc = "Toggle DAP UI"; }
 
+    # Git blame
+    { mode = "n"; key = "<leader>gB"; action = "<cmd>Gitsigns blame_line<CR>"; options.desc = "Git blame line"; }
+    { mode = "n"; key = "<leader>gt"; action = "<cmd>Gitsigns toggle_current_line_blame<CR>"; options.desc = "Toggle line blame"; }
+
     # Trouble (diagnostics list)
     { mode = "n"; key = "<leader>xx"; action = "<cmd>Trouble diagnostics toggle<CR>"; options.desc = "Diagnostics (Trouble)"; }
     { mode = "n"; key = "<leader>xX"; action = "<cmd>Trouble diagnostics toggle filter.buf=0<CR>"; options.desc = "Buffer diagnostics"; }
