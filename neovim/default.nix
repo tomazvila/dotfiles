@@ -265,36 +265,56 @@
   # Telescope - Fuzzy finder
   plugins.telescope = {
     enable = true;
-    settings.defaults = {
-      hidden = true;
-      file_ignore_patterns = [
-        # JavaScript / TypeScript
-        "node_modules/"
-        "%.next/"
-        "dist/"
-        # Haskell
-        "dist%-newstyle/"
-        "%.stack%-work/"
-        "%.cabal%-sandbox/"
-        # Scala
-        "%.metals/"
-        "%.bloop/"
-        "%.bsp/"
-        "target/"
-        # Rust
-        "target/debug/"
-        "target/release/"
-        # Python
-        "__pycache__/"
-        "%.venv/"
-        "%.mypy_cache/"
-        "%.pytest_cache/"
-        # Go
-        "vendor/"
-        # General
-        "%.git/"
-        "build/"
-        "result/"
+    settings = {
+      defaults = {
+        hidden = true;
+        file_ignore_patterns = [
+          # JavaScript / TypeScript
+          "node_modules/"
+          "%.next/"
+          "dist/"
+          # Haskell
+          "dist%-newstyle/"
+          "%.stack%-work/"
+          "%.cabal%-sandbox/"
+          # Scala
+          "%.metals/"
+          "%.bloop/"
+          "%.bsp/"
+          "target/"
+          # Rust
+          "target/debug/"
+          "target/release/"
+          # Python
+          "__pycache__/"
+          "%.venv/"
+          "%.mypy_cache/"
+          "%.pytest_cache/"
+          # Go
+          "vendor/"
+          # General
+          "%.git/"
+          "build/"
+          "result/"
+        ];
+      };
+      pickers.find_files.find_command = [
+        "rg"
+        "--files"
+        "--hidden"
+        "--no-ignore-vcs"
+        "-g"
+        "!node_modules/**"
+        "-g"
+        "!dist/**"
+        "-g"
+        "!target/**"
+        "-g"
+        "!vendor/**"
+        "-g"
+        "!build/**"
+        "-g"
+        "!.git/**"
       ];
     };
     extensions = {
@@ -341,7 +361,7 @@
         lualine_a = [ "mode" ];
         lualine_b = [ "branch" "diff" "diagnostics" ];
         lualine_c = [ "filename" ];
-        lualine_x = [ "encoding" "fileformat" "filetype" ];
+        lualine_x = [ "encoding" "filetype" ];
         lualine_y = [ "progress" ];
         lualine_z = [ "location" ];
       };

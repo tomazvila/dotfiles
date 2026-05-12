@@ -4,8 +4,8 @@ let
   tokyoNight = pkgs.tmuxPlugins.tokyo-night-tmux;
   cnScript = "${tokyoNight}/share/tmux-plugins/tokyo-night-tmux/src/custom-number.sh";
   # Conditional color based on window state:
-  #   silent (idle/waiting for input) = green, active (producing output) = yellow, default = foreground
-  stateColor = "#{?#{window_silence_flag},#[fg=#73daca],#{?#{window_activity_flag},#[fg=#e0af68],#[fg=#a9b1d6]}}";
+  #   AI waiting (needs permission/input) = red, silent (idle) = green, active (output) = yellow, default = foreground
+  stateColor = "#{?#{==:#{@codex-state},waiting},#[fg=#f7768e],#{?#{==:#{@codex-state},running},#[fg=#e0af68],#{?#{==:#{@codex-state},idle},#[fg=#73daca],#{?#{@ai-waiting},#[fg=#f7768e],#{?#{window_silence_flag},#[fg=#73daca],#{?#{window_activity_flag},#[fg=#e0af68],#[fg=#a9b1d6]}}}}}}";
 in
 {
   programs.tmux = {
@@ -49,6 +49,9 @@ in
     ];
 
     extraConfig = ''
+      # Automatically renumber windows when one is deleted
+      set -g renumber-windows on
+
       # Send C-a to shell with C-a C-a (for beginning of line)
       bind C-a send-prefix
 

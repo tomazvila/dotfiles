@@ -7,6 +7,9 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    codexHooks.url = "path:./codex";
+    codexHooks.inputs.nixpkgs.follows = "nixpkgs";
+    codexHooks.inputs.home-manager.follows = "home-manager";
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -29,6 +32,10 @@
           nixpkgs.config.allowUnfree = true;
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.sharedModules = [
+            inputs.codexHooks.homeModules.default
+          ];
           home-manager.users.lilvilla = import ./home.nix;
           home-manager.extraSpecialArgs = { inherit neovimPackage; };
         }
