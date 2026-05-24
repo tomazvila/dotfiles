@@ -12,6 +12,9 @@
   system.stateVersion = 6;
   system.primaryUser = "lilvilla";
 
+  # AeroSpace is more stable when one macOS Space spans all displays.
+  system.defaults.spaces.spans-displays = true;
+
   users.users.lilvilla = {
     name = "lilvilla";
     home = "/Users/lilvilla";
