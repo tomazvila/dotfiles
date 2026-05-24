@@ -15,6 +15,9 @@
   # AeroSpace is more stable when one macOS Space spans all displays.
   system.defaults.spaces.spans-displays = true;
 
+  # Keep macOS from jumping to a different Space when an app is activated.
+  system.defaults.NSGlobalDomain.AppleSpacesSwitchOnActivate = false;
+
   users.users.lilvilla = {
     name = "lilvilla";
     home = "/Users/lilvilla";
