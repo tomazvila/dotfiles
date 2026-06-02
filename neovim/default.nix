@@ -298,24 +298,28 @@
           "result/"
         ];
       };
-      pickers.find_files.find_command = [
-        "rg"
-        "--files"
-        "--hidden"
-        "--no-ignore-vcs"
-        "-g"
-        "!node_modules/**"
-        "-g"
-        "!dist/**"
-        "-g"
-        "!target/**"
-        "-g"
-        "!vendor/**"
-        "-g"
-        "!build/**"
-        "-g"
-        "!.git/**"
-      ];
+      pickers.find_files.find_command.__raw = ''
+        vim.env.WORKOFO_WEBGUI_MOBILE_NVIM_FAST_FIND == "1"
+          and { "rg", "--files", "--hidden", "-g", "!.git/**" }
+          or {
+            "rg",
+            "--files",
+            "--hidden",
+            "--no-ignore-vcs",
+            "-g",
+            "!node_modules/**",
+            "-g",
+            "!dist/**",
+            "-g",
+            "!target/**",
+            "-g",
+            "!vendor/**",
+            "-g",
+            "!build/**",
+            "-g",
+            "!.git/**",
+          }
+      '';
     };
     extensions = {
       fzf-native.enable = true;
