@@ -9,8 +9,10 @@
   home.packages = [
     pkgs.git
     pkgs.ripgrep
+    pkgs.fd
     pkgs.bat
     pkgs.difftastic
+    pkgs.diffnav
     pkgs.jq
     pkgs.hyperfine
     pkgs.procs
@@ -21,6 +23,14 @@
     neovimPackage
     (import ./pkgs/utt.nix { inherit pkgs; })
   ];
+
+  xdg.configFile."diffnav/config.yml".text = ''
+    ui:
+      showFileTree: true
+      showDiffStats: true
+      sideBySide: true
+      icons: nerd-fonts-filetype
+  '';
 
   programs.ssh = {
     enable = true;
@@ -36,6 +46,8 @@
     settings.user.name = "tomazvila";
     settings.user.email = "tomazvila@outlook.com";
     settings.push.autoSetupRemote = true;
+    settings.pager.diff = "diffnav";
+    settings.pager.show = "diffnav";
     includes = [
       {
         condition = "hasconfig:remote.*.url:git@gitlab.com:*/**";
@@ -74,7 +86,10 @@
     package = null;  # Installed via Homebrew, not nix
     settings = {
       font-family = "JetBrainsMono Nerd Font";
+      adjust-cell-height = "1.02%";
       window-padding-y = "2,0";
+      window-padding-color = "extend-always";
+      window-step-resize = true;
       command = "/bin/zsh -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'";
     };
   };
