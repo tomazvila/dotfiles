@@ -12,7 +12,6 @@
   system.stateVersion = 6;
   system.primaryUser = "lilvilla";
 
-  # AeroSpace is more stable when one macOS Space spans all displays.
   system.defaults.spaces.spans-displays = true;
 
   # Keep macOS from jumping to a different Space when an app is activated.
@@ -27,11 +26,8 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      cleanup = "zap";
+      cleanup = "none";
     };
-    taps = [
-      "nikitabobko/tap"
-    ];
     casks = [
       "font-jetbrains-mono-nerd-font"
       "font-noto-sans-symbols-2"
@@ -42,7 +38,6 @@
       "docker-desktop"
       "ghostty"
       "libreoffice"
-      "nikitabobko/tap/aerospace"
       "obsidian"
       "openmtp"
       "pritunl"

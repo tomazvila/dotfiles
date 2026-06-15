@@ -1,7 +1,6 @@
 { pkgs, neovimPackage, ... }: {
   imports = [
     ./tmux
-    ./aerospace
   ];
 
   home.stateVersion = "24.11";
