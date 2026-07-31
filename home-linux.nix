@@ -21,6 +21,14 @@
       port = 23;
       identityFile = "~/.ssh/id_ed25519";
     };
+    # Account-level GitHub access for dev clones (the plain github.com entry
+    # stays pinned to the homelab repo's read-only deploy key):
+    #   git clone git@github-dev:tomazvila/<repo>.git
+    "github-dev" = {
+      hostname = "github.com";
+      identityFile = "~/.ssh/id_ed25519";
+      identitiesOnly = true;
+    };
   };
 
   # Standalone home-manager manages itself (provides the `home-manager` command)
