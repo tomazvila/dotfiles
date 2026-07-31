@@ -8,6 +8,21 @@
   home.username = "deploy";
   home.homeDirectory = "/home/deploy";
 
+  # Server-specific SSH hosts (previously hand-managed in ~/.ssh/config):
+  # read-only GitHub deploy key + Hetzner Storage Box for restic
+  programs.ssh.matchBlocks = {
+    "github.com" = {
+      identityFile = "~/.ssh/github_homelab";
+      identitiesOnly = true;
+    };
+    "storagebox" = {
+      hostname = "u641176.your-storagebox.de";
+      user = "u641176";
+      port = 23;
+      identityFile = "~/.ssh/id_ed25519";
+    };
+  };
+
   # Standalone home-manager manages itself (provides the `home-manager` command)
   programs.home-manager.enable = true;
 }
