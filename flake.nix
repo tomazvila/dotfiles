@@ -16,11 +16,13 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nixvim, ... }: let
     system = "aarch64-darwin";
+    linuxSystem = "x86_64-linux";
 
     # Build neovim package from our config
-    neovimPackage = nixvim.legacyPackages.${system}.makeNixvim (
-      import ./neovim { inherit nixpkgs system; }
+    mkNeovim = sys: nixvim.legacyPackages.${sys}.makeNixvim (
+      import ./neovim { inherit nixpkgs; system = sys; }
     );
+    neovimPackage = mkNeovim system;
   in {
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       inherit system;
@@ -42,10 +44,24 @@
       ];
     };
 
+    # Standalone home-manager config for the homelab server
+    homeConfigurations."deploy" = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        system = linuxSystem;
+        config.allowUnfree = true;
+      };
+      modules = [ ./home-linux.nix ];
+      extraSpecialArgs = { neovimPackage = mkNeovim linuxSystem; };
+    };
+
     # Also export neovim as a standalone package for testing
     packages.${system} = {
       neovim = neovimPackage;
       default = neovimPackage;
+    };
+    packages.${linuxSystem} = {
+      neovim = mkNeovim linuxSystem;
+      default = mkNeovim linuxSystem;
     };
   };
 }
