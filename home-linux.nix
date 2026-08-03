@@ -24,8 +24,13 @@
     # Account-level GitHub access for dev clones (the plain github.com entry
     # stays pinned to the homelab repo's read-only deploy key):
     #   git clone git@github-dev:tomazvila/<repo>.git
+    # `user = "git"` is not cosmetic: without it, an scp-style remote that
+    # omits the user (github-dev:owner/repo.git) falls back to the *local*
+    # username and GitHub rejects it as deploy@github.com. Setting it here
+    # makes both remote spellings work.
     "github-dev" = {
       hostname = "github.com";
+      user = "git";
       identityFile = "~/.ssh/id_ed25519";
       identitiesOnly = true;
     };
