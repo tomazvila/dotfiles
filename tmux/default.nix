@@ -58,6 +58,13 @@ in
       # True color support
       set -ag terminal-overrides ",xterm-256color:RGB"
 
+      # Modified keys (Shift+Enter, Ctrl+Enter, ...) for TUI apps such as pi.
+      # tmux requests extended keys from the outer terminal only when its
+      # terminal-features include extkeys, so declare it for Ghostty.
+      set -as terminal-features 'xterm-ghostty:extkeys'
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
+
       # Split panes with | and - (preserve current path)
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"

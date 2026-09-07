@@ -31,6 +31,7 @@
     neovimPackage
     (import ./pkgs/utt.nix { inherit pkgs; })
     (import ./pkgs/mermaid-ascii.nix { inherit pkgs; })
+    (import ./pkgs/headroom.nix { inherit pkgs; })
   ];
 
   xdg.configFile."diffnav/config.yml".text = ''
