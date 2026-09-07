@@ -4,6 +4,7 @@ let
   codexHome = "${config.home.homeDirectory}/.codex";
   tmuxStatusHook = "${codexHome}/hooks/tmux-codex-status.sh";
   sessionCheckpointHook = "${codexHome}/hooks/session_checkpoint.py";
+  responseQualityHook = "${codexHome}/hooks/response_quality_gate.py";
   hookCommand = state: {
     type = "command";
     command = "${tmuxStatusHook} ${state}";
@@ -18,6 +19,12 @@ let
     type = "command";
     command = "${pkgs.python3}/bin/python3 ${sessionCheckpointHook}";
     inherit timeout statusMessage;
+  };
+  responseQualityCommand = {
+    type = "command";
+    command = "${pkgs.python3}/bin/python3 ${responseQualityHook}";
+    timeout = 3;
+    statusMessage = "Checking response clarity";
   };
 in
 {
@@ -38,10 +45,16 @@ in
     force = true;
   };
 
+  home.file.".codex/hooks/response_quality_gate.py" = {
+    source = ./hooks/response_quality_gate.py;
+    executable = true;
+    force = true;
+  };
+
   home.file.".codex/hooks.json" = {
     force = true;
     text = builtins.toJSON {
-      description = "Global status and lossless session-checkpoint hooks.";
+      description = "Global status, response-quality, and lossless session-checkpoint hooks.";
       hooks = {
       SessionStart = [
         {
@@ -95,7 +108,7 @@ in
       ];
       Stop = [
         {
-          hooks = [ (hookCommand "idle") ];
+          hooks = [ responseQualityCommand (hookCommand "idle") ];
         }
       ];
       };

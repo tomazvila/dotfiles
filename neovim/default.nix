@@ -119,19 +119,19 @@
     # Delete without yanking
     { mode = [ "n" "v" ]; key = "<leader>d"; action = ''"_d''; options.desc = "Delete without yank"; }
 
-    # Telescope
-    { mode = "n"; key = "<leader>ff"; action = "<cmd>Telescope find_files<CR>"; options.desc = "Find files"; }
-    { mode = "n"; key = "<leader>fg"; action = "<cmd>Telescope live_grep<CR>"; options.desc = "Live grep"; }
-    { mode = "n"; key = "<leader>fb"; action = "<cmd>Telescope buffers<CR>"; options.desc = "Find buffers"; }
-    { mode = "n"; key = "<leader>fh"; action = "<cmd>Telescope help_tags<CR>"; options.desc = "Help tags"; }
-    { mode = "n"; key = "<leader>fo"; action = "<cmd>Telescope oldfiles<CR>"; options.desc = "Recent files"; }
-    { mode = "n"; key = "<leader>fw"; action = "<cmd>Telescope grep_string<CR>"; options.desc = "Grep word under cursor"; }
-    { mode = "n"; key = "<leader>fd"; action = "<cmd>Telescope diagnostics<CR>"; options.desc = "Diagnostics"; }
-    { mode = "n"; key = "<leader>fs"; action = "<cmd>Telescope lsp_document_symbols<CR>"; options.desc = "Document symbols"; }
-    { mode = "n"; key = "<leader>fr"; action = "<cmd>Telescope resume<CR>"; options.desc = "Resume last search"; }
-    { mode = "n"; key = "<leader>gc"; action = "<cmd>Telescope git_commits<CR>"; options.desc = "Git commits"; }
-    { mode = "n"; key = "<leader>gb"; action = "<cmd>Telescope git_branches<CR>"; options.desc = "Git branches"; }
-    { mode = "n"; key = "<leader>gs"; action = "<cmd>Telescope git_status<CR>"; options.desc = "Git status"; }
+    # Pickers: fff (files) + fzf-lua (everything else)
+    { mode = "n"; key = "<leader>ff"; action = "<cmd>FFFFind<CR>"; options.desc = "Find files"; }
+    { mode = "n"; key = "<leader>fg"; action = "<cmd>FzfLua live_grep<CR>"; options.desc = "Live grep"; }
+    { mode = "n"; key = "<leader>fb"; action = "<cmd>FzfLua buffers<CR>"; options.desc = "Find buffers"; }
+    { mode = "n"; key = "<leader>fh"; action = "<cmd>FzfLua helptags<CR>"; options.desc = "Help tags"; }
+    { mode = "n"; key = "<leader>fo"; action = "<cmd>FzfLua oldfiles<CR>"; options.desc = "Recent files"; }
+    { mode = "n"; key = "<leader>fw"; action = "<cmd>FzfLua grep_cword<CR>"; options.desc = "Grep word under cursor"; }
+    { mode = "n"; key = "<leader>fd"; action = "<cmd>FzfLua diagnostics_workspace<CR>"; options.desc = "Diagnostics"; }
+    { mode = "n"; key = "<leader>fs"; action = "<cmd>FzfLua lsp_document_symbols<CR>"; options.desc = "Document symbols"; }
+    { mode = "n"; key = "<leader>fr"; action = "<cmd>FzfLua resume<CR>"; options.desc = "Resume last search"; }
+    { mode = "n"; key = "<leader>gc"; action = "<cmd>FzfLua git_commits<CR>"; options.desc = "Git commits"; }
+    { mode = "n"; key = "<leader>gb"; action = "<cmd>FzfLua git_branches<CR>"; options.desc = "Git branches"; }
+    { mode = "n"; key = "<leader>gs"; action = "<cmd>FzfLua git_status<CR>"; options.desc = "Git status"; }
 
     # Neo-tree
     { mode = "n"; key = "<leader>e"; action = "<cmd>Neotree toggle<CR>"; options.desc = "Toggle file explorer"; }
@@ -141,7 +141,7 @@
     { mode = "n"; key = "gd"; action = "<cmd>lua vim.lsp.buf.definition()<CR>"; options.desc = "Go to definition"; }
     { mode = "n"; key = "gD"; action = "<cmd>lua vim.lsp.buf.declaration()<CR>"; options.desc = "Go to declaration"; }
     { mode = "n"; key = "gi"; action = "<cmd>lua vim.lsp.buf.implementation()<CR>"; options.desc = "Go to implementation"; }
-    { mode = "n"; key = "gr"; action = "<cmd>Telescope lsp_references<CR>"; options.desc = "Find references"; }
+    { mode = "n"; key = "gr"; action = "<cmd>FzfLua lsp_references<CR>"; options.desc = "Find references"; }
     { mode = "n"; key = "K"; action = "<cmd>lua vim.lsp.buf.hover()<CR>"; options.desc = "Hover documentation"; }
     { mode = "n"; key = "<leader>ca"; action = "<cmd>lua vim.lsp.buf.code_action()<CR>"; options.desc = "Code actions"; }
     { mode = "n"; key = "<leader>rn"; action = "<cmd>lua vim.lsp.buf.rename()<CR>"; options.desc = "Rename symbol"; }
@@ -262,69 +262,20 @@
   plugins.luasnip.enable = true;
   plugins.friendly-snippets.enable = true;
 
-  # Telescope - Fuzzy finder
-  plugins.telescope = {
+  # FFF - fuzzy file picker with a persistent Rust index (frecency-, git- and
+  # typo-aware). Respects .gitignore; add a sibling .ignore file for extra
+  # picker-only excludes, :FFFScan to reindex.
+  plugins.fff.enable = true;
+
+  # Fzf-lua - grep, buffer, LSP, diagnostics and git pickers
+  plugins.fzf-lua = {
     enable = true;
-    settings = {
-      defaults = {
-        hidden = true;
-        file_ignore_patterns = [
-          # JavaScript / TypeScript
-          "node_modules/"
-          "%.next/"
-          "dist/"
-          # Haskell
-          "dist%-newstyle/"
-          "%.stack%-work/"
-          "%.cabal%-sandbox/"
-          # Scala
-          "%.metals/"
-          "%.bloop/"
-          "%.bsp/"
-          "target/"
-          # Rust
-          "target/debug/"
-          "target/release/"
-          # Python
-          "__pycache__/"
-          "%.venv/"
-          "%.mypy_cache/"
-          "%.pytest_cache/"
-          # Go
-          "vendor/"
-          # General
-          "%.git/"
-          "build/"
-          "result/"
-        ];
-      };
-      pickers.find_files.find_command.__raw = ''
-        vim.env.WORKOFO_WEBGUI_MOBILE_NVIM_FAST_FIND == "1"
-          and { "rg", "--files", "--hidden", "-g", "!.git/**" }
-          or {
-            "rg",
-            "--files",
-            "--hidden",
-            "--no-ignore-vcs",
-            "-g",
-            "!node_modules/**",
-            "-g",
-            "!dist/**",
-            "-g",
-            "!target/**",
-            "-g",
-            "!vendor/**",
-            "-g",
-            "!build/**",
-            "-g",
-            "!.git/**",
-          }
-      '';
-    };
-    extensions = {
-      fzf-native.enable = true;
-      ui-select.enable = true;
-    };
+    # Telescope-like UI layout
+    profile = "telescope";
+    # Route vim.ui.select through fzf-lua (replaces telescope-ui-select)
+    luaConfig.post = ''
+      require("fzf-lua").register_ui_select()
+    '';
   };
 
   # Neo-tree - File explorer

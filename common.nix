@@ -3,9 +3,16 @@
 { pkgs, neovimPackage, ... }: {
   imports = [
     ./tmux
+    ./pi
   ];
 
   home.stateVersion = "24.11";
+
+  # Available to login and non-interactive shells, including Codex over SSH.
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "/opt/homebrew/bin"
+  ];
 
   home.packages = [
     pkgs.git
@@ -40,6 +47,12 @@
     matchBlocks."gitlab.com" = {
       hostname = "gitlab.com";
       identityFile = "~/.ssh/id_ed25519";
+    };
+    matchBlocks."workofo-target" = {
+      hostname = "192.168.1.207";
+      user = "lilvilla";
+      identityFile = "~/.ssh/id_ed25519";
+      identitiesOnly = true;
     };
   };
 
