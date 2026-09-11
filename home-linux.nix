@@ -15,6 +15,12 @@
       identityFile = "~/.ssh/github_homelab";
       identitiesOnly = true;
     };
+    "mac" = {
+      hostname = "10.8.0.3";
+      user = "lilvilla";
+      identityFile = "~/.ssh/id_ed25519_homelab";
+      identitiesOnly = true;
+    };
     "storagebox" = {
       hostname = "u641176.your-storagebox.de";
       user = "u641176";

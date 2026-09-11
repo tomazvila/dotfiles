@@ -12,6 +12,12 @@
     codexHooks.inputs.home-manager.follows = "home-manager";
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    # Hermes Agent ships its own flake (uv2nix build) with a Home Manager
+    # module. Pinned to a release tag; bump the tag to update. It keeps its
+    # own nixpkgs pin: its package needs packages (e.g. tirith) that are
+    # newer than this repo's nixpkgs, and upstream only tests its own pin.
+    hermes-agent.url = "github:NousResearch/hermes-agent/v2026.9.7";
+    hermes-agent.inputs.home-manager.follows = "home-manager";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nixvim, ... }: let
@@ -37,6 +43,7 @@
           home-manager.backupFileExtension = "backup";
           home-manager.sharedModules = [
             inputs.codexHooks.homeModules.default
+            inputs.hermes-agent.homeManagerModules.default
           ];
           home-manager.users.lilvilla = import ./home.nix;
           home-manager.extraSpecialArgs = { inherit neovimPackage; };

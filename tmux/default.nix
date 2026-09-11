@@ -62,7 +62,8 @@ in
       # tmux requests extended keys from the outer terminal only when its
       # terminal-features include extkeys, so declare it for Ghostty.
       set -as terminal-features 'xterm-ghostty:extkeys'
-      set -g extended-keys on
+      # Preserve modified keys even when apps such as Codex do not request them.
+      set -g extended-keys always
       set -g extended-keys-format csi-u
 
       # Split panes with | and - (preserve current path)

@@ -2,6 +2,7 @@
 { pkgs, ... }: {
   imports = [
     ./common.nix
+    ./hermes
   ];
 
   programs.ghostty = {

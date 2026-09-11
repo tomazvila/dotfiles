@@ -22,9 +22,17 @@ let
       models = [
         {
           id = "qwen-coder";
-          name = "Qwen3-Coder 30B (self-hosted)";
+          name = "Qwen3-Coder 30B 4-bit (self-hosted)";
           reasoning = false;
           contextWindow = 262144;
+          maxTokens = 65536;
+        }
+        {
+          id = "qwen-coder-8bit";
+          name = "Qwen3-Coder 30B 8-bit (self-hosted)";
+          reasoning = false;
+          contextWindow = 262144;
+          maxTokens = 65536;
         }
       ];
     };
