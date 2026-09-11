@@ -29,13 +29,9 @@ pkgs.stdenvNoCC.mkDerivation {
   dontConfigure = true;
   dontBuild = true;
 
-  nativeBuildInputs = pkgs.lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-    pkgs.autoPatchelfHook
-  ];
-
-  buildInputs = pkgs.lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-    pkgs.stdenv.cc.libc
-  ];
+  dontAutoPatchelf = true;
+  dontPatchELF = true;
+  dontStrip = true;
 
   installPhase = ''
     runHook preInstall
