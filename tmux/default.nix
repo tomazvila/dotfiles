@@ -10,6 +10,21 @@ in
 {
   programs.tmux = {
     enable = true;
+    # Includes the scrollback grid double-free fix (upstream 035a2f35).
+    package = pkgs.tmux.overrideAttrs (old: {
+      version = "3.7c";
+      src = pkgs.fetchFromGitHub {
+        owner = "tmux";
+        repo = "tmux";
+        rev = "3.7c";
+        hash = "sha256-TpZXTeXKQv6MV1vAPu5MIT52d3Pl6dYcOReZa7QANZY=";
+      };
+      # tmux 3.7c uses jemalloc on macOS to avoid a calloc issue.
+      buildInputs = old.buildInputs
+        ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ pkgs.jemalloc ];
+      configureFlags = old.configureFlags
+        ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ "--enable-jemalloc" ];
+    });
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color";
     prefix = "C-a";
