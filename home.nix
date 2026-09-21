@@ -1,5 +1,5 @@
 # macOS-specific home config on top of common.nix
-{ pkgs, ... }: {
+{ config, ... }: {
   imports = [
     ./common.nix
     ./hermes
@@ -18,7 +18,7 @@
       window-padding-balance = true;
       window-padding-color = "background";
       window-step-resize = true;
-      command = "/bin/zsh -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'";
+      command = "/bin/zsh -l -c '${config.programs.tmux.package}/bin/tmux new-session -A -s main'";
     };
   };
 }
