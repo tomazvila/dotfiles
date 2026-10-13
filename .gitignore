@@ -5,6 +5,9 @@ result-*
 # macOS
 .DS_Store
 
+# Secrets
+open-router-deepkseek-api-key.txt
+
 __pycache__/
 .serena/
 
