@@ -5,9 +5,21 @@
 # CLI on and exports HERMES_HOME. Runtime state under ~/.hermes (config.yaml,
 # .env, auth.json, sessions, skills, memory) is written by `hermes setup` and
 # `hermes model` and stays unmanaged, like pi's runtime state.
-{ ... }:
+{ config, options, pkgs, ... }:
 {
   programs.hermes-agent.enable = true;
+
+  # Patch the common task boundary, preserving upstream dependencies/wrappers.
+  services.hermes-agent.package = import ./objectives/package.nix {
+    inherit pkgs;
+    base = options.services.hermes-agent.package.default;
+  };
+
+  home.file.".hermes/objective-runtime".source = config.services.hermes-agent.package.override {
+    inherit (config.services.hermes-agent) extraPythonPackages extraDependencyGroups;
+  };
+  home.file.".local/bin/hermes".source = "${config.home.file.".hermes/objective-runtime".source}/bin/hermes";
+  home.file.".local/bin/hermes-objectives".source = "${config.home.file.".hermes/objective-runtime".source}/bin/hermes-objectives";
 
   # Same optional groups as the flake's default package, minus `voice`
   # (local speech-to-text via faster-whisper). Its wheel-only deps

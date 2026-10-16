@@ -63,6 +63,7 @@
 
     # Also export neovim as a standalone package for testing
     packages.${system} = {
+      hermes-objectives = self.darwinConfigurations.mac.config.home-manager.users.lilvilla.home.file.".hermes/objective-runtime".source;
       neovim = neovimPackage;
       default = neovimPackage;
     };
@@ -70,5 +71,19 @@
       neovim = mkNeovim linuxSystem;
       default = mkNeovim linuxSystem;
     };
+    checks.${system}.hermes-objectives = let
+      pkgs = import nixpkgs { inherit system; };
+      package = self.packages.${system}.hermes-objectives;
+    in pkgs.runCommand "hermes-objectives-regressions" {} ''
+      export HERMES_TEST_KANBAN_API=${package.upstream}/share/hermes-agent/plugins/kanban/dashboard/plugin_api.py
+      export HERMES_TEST_EVIDENCE_VERIFIER=${./hermes/objectives/verify_evidence.py}
+      mkdir -p "$TMPDIR/objectives/tests"
+      cp ${./hermes/objectives/tests}/*.py "$TMPDIR/objectives/tests/"
+      cp ${./hermes/objectives/verify_evidence.py} "$TMPDIR/objectives/verify_evidence.py"
+      cp ${./hermes/objectives/verify_terminal_readiness.py} "$TMPDIR/objectives/verify_terminal_readiness.py"
+      cp ${./hermes/objectives/verify_readiness_disposition.py} "$TMPDIR/objectives/verify_readiness_disposition.py"
+      ${package}/bin/python -m unittest discover -s "$TMPDIR/objectives/tests" -v
+      touch $out
+    '';
   };
 }

@@ -1,0 +1,257 @@
+{
+  "checks": [
+    {
+      "kind": "file",
+      "path": "/Users/lilvilla/.hermes/objectives/nora-jev/outcome.json"
+    },
+    {
+      "argv": [
+        "/Users/lilvilla/.hermes/objective-runtime/bin/python",
+        "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py",
+        "/Users/lilvilla/.hermes/objectives/nora-jev/outcome.json",
+        "outcome"
+      ],
+      "cwd": "/Users/lilvilla/Programming/workofo/scheduleplanner",
+      "kind": "command",
+      "source_hashes": {
+        "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py": "7c819931e1715fc45ce89543a1adcf9ef582f1ba17e60462c7b5b4b5259d4a59"
+      },
+      "timeout": 1
+    }
+  ],
+  "constraints": [
+    "No production writes, deployment, notifications or external transmission of identifiable customer data.",
+    "Preserve old reviews, manifests, STOP reservations, unknown costs and all request dispositions.",
+    "Independent exact-source technical approval remains mandatory before paid KB/config trials; preserve all existing budgets.",
+    "Use isolated assigned worktrees and the shared serialized heavy-build helper; one source-coherent edit/build window per worktree.",
+    "Accept negative and inconclusive results. Frozen/reconstructed timing cannot prove live-network speedup.",
+    "No Qwen/Laya, holdout or new user spending gate."
+  ],
+  "max_repairs": 2,
+  "model_override": "gpt-6-astra",
+  "objective": "Complete an evidence-grounded Nora/Jev comparison, including exact routing-input acquisition and both current classification experiment lanes; decide adopt/reject/inconclusive without claiming helper-test counts establish speedup.",
+  "owner": "default",
+  "provider_override": "openai-codex",
+  "schema": 1,
+  "scope": "Existing authorized Nora/Jev investigation and exact pre-routing capture. Current J03 capture enables a future routing experiment; it does not authorize new J03 paid trials. Existing KB/config comparison authorities and numerical ceilings remain unchanged.",
+  "stages": [
+    {
+      "body": "Implement exact pre-routing input capture in AssistantIntentRouter at the point AssistantLlmIntentRequest is constructed, including the authorized native playbookOptions and all request/context fields. Read CLAUDE.md. Preserve default routing behavior and disable production capture by default; capture must remain local, bounded and privacy-controlled. Use the already authorized historical request material through a native offline router test seam; preserve the exact constructed bytes and an independently written round-trip artifact. Distinguish historical customer-origin material from synthetic fixtures; never invent missing historical context. No external transmissions or provider calls, production writes, notifications, service restarts or global installs. Add meaningful tests for authorization-scoped workflow options, complete input serialization and behavior parity. Verify original routing remains unchanged. Emit /Users/lilvilla/.hermes/objectives/nora-jev/routing-capture.json using the capture schema in /Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py; include current source hashes, raw captured snapshots with origin=native-router-input, artifact SHA256 references, separate byte-identical round_trip files and provider_calls=0. This is implementation/acquisition work: missing historical logs require instrumentation rather than deferral.",
+      "checks": [
+        {
+          "fresh": false,
+          "kind": "file",
+          "path": "/Users/lilvilla/.hermes/objectives/nora-jev/routing-capture.json"
+        },
+        {
+          "argv": [
+            "/Users/lilvilla/.hermes/objective-runtime/bin/python",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py",
+            "/Users/lilvilla/.hermes/objectives/nora-jev/routing-capture.json",
+            "capture",
+            "--source-root",
+            "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-routing-capture",
+            "--required-source",
+            "src/main/java/com/workofo/assistant/orchestration/AssistantIntentRouter.java"
+          ],
+          "cwd": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-routing-capture",
+          "kind": "command",
+          "source_hashes": {
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py": "7c819931e1715fc45ce89543a1adcf9ef582f1ba17e60462c7b5b4b5259d4a59"
+          },
+          "timeout": 1
+        }
+      ],
+      "id": "routing-capture",
+      "max_runtime_seconds": 1800,
+      "task_id": "t_8edeacd8",
+      "title": "Implement and capture exact Nora pre-routing input",
+      "workspace_kind": "dir",
+      "workspace_path": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-routing-capture"
+    },
+    {
+      "after": [],
+      "body": "Owner explicitly resumed Nora/Jev investigation 2026-10-12. Complete executable KB experiment repairs, not another audit-only negative-readiness report. Work only in /Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments. Read CLAUDE.md, current assessment skill, B1-B6 in logs/kb-freeze-t_d4a8845d/READINESS.txt, source-handoff /Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments/logs/nora-jev-resume-20261012T063233Z/CHECKPOINT.json, and original t_89e233f4 scope. Codex has repaired null/nonstring section-label NPE and stop-on-first INVALID contract, and verified 40 Java tests,36 Python tests,714 offline bridge calls across34 checkpoints. Re-review these exact sources independently in the eventual readiness pass; do not self-update stale approvals.\nDeliver the smallest complete prospective executable comparison while keeping ALL request/candidate dispositions visible. Reconcile eligibility: J18 has25 schema-valid payloads and9 oversize; J19 current corpus has25 HEAD_BOUND and9 UNREACHED, zero eligible Jev section batches. Retain J19 as unsupported for this corpus instead of blocking the usable J18 cohort or silently splitting/truncating; separately labelled synthetic section fixtures may verify wiring. Remove obsolete Score thresholds/candidate counts and unused budgets from the NEW manifest only. Keep previous manifests/stopped results immutable. Use existing controls and captured construction accounting; do not rebuild an unnecessarily expanded612-slot matrix or expand inherited numerical ceilings.\nImplement and test missing exact-byte PUBLIC SYNTHETIC full-head2s diagnostic executor/reservation (up to3 new sends, no automatic retries) and preserve the consumed failed500ms reservation/unknown costs.500ms treatment stays unchanged and timeout/fallback is a measured outcome, not grounds for demanding guaranteed fast success. Predeclare a slower treatment separately if included. Build explicit source/context-bound new review/freeze entrypoints; no assert-only safety gates or bypass of stale hashes. Complete evidence-cited semantic references/mandatory spans from available inputs BEFORE NEW outputs, fixed blind Astra prompt/settings/judging budget, deterministic seeded paired schedule, cumulative send/wall budgets and immediate stop/resume guards. Keep unsupported historical whole-turn replay explicitly unsupported; frozen-response continuation is a labelled experiment and cannot prove live-network parallel speedup. Any speed claim must measure actual critical path and surviving final answers with full fallback/failure/cost accounting.\nImplement the missing artifacts/code and run meaningful offline checks, then request an independent fresh exact-source review via existing Kanban request-review workflow, which runs a fresh reviewer against a concrete snapshot. Narrow wire approvals alone are insufficient. Existing bounded provider comparison authorization persists after technical readiness; no new user permission, no holdout/Qwen/Laya, no production writes/deployment/notifications/restarts/global installs/GUI terminals. Do not exit with unchanged blockers. Once exact-source APPROVE and new freeze pass, execute bounded diagnostics and release/assign existing t_9e73e975 for proper paired comparisons, preserve negative evidence. Correct review findings autonomously. Do not self-approve or claim benefit from transport conformance/test counts. Shared serialized Maven helper, no source editing during builds/bridges; stop owned tests. Configuration worker owns the separate config tree; do not touch it.",
+      "checks": [
+        {
+          "fresh": false,
+          "kind": "file",
+          "path": "/Users/lilvilla/.hermes/objectives/nora-jev/kb-implementation.json"
+        },
+        {
+          "argv": [
+            "/Users/lilvilla/.hermes/objective-runtime/bin/python",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py",
+            "/Users/lilvilla/.hermes/objectives/nora-jev/kb-implementation.json",
+            "implementation",
+            "--source-root",
+            "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments",
+            "--required-source",
+            "src/main/java/com/workofo/assistant/service/NoraKbExecutionPermit.java",
+            "--required-test",
+            "shouldRejectComparisonBeforeDiagnosticReadiness",
+            "--required-test",
+            "shouldRejectAnotherRequestWhileReservationUnresolved",
+            "--required-test",
+            "shouldRejectOutOfOrderOrInterruptedDispatch"
+          ],
+          "cwd": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments",
+          "kind": "command",
+          "source_hashes": {
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py": "7c819931e1715fc45ce89543a1adcf9ef582f1ba17e60462c7b5b4b5259d4a59"
+          },
+          "timeout": 2
+        }
+      ],
+      "id": "kb-implementation",
+      "task_id": "t_b5e04bd9",
+      "title": "Finish KB experiment implementation repairs and obtain independent execution review",
+      "workspace_kind": "dir",
+      "workspace_path": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments"
+    },
+    {
+      "after": [
+        "kb-implementation"
+      ],
+      "body": "Review the implemented harness and upstream approval evidence for task t_89e233f4. Before any inference, freeze a versioned manifest containing exact tasks, labels, evidence-grounded quality rubric, budgets, source/input hashes, model identities/settings, arm definitions, repetition/pairing plan, concurrency bounds, failure policy, and accounting rules. Use the saved corpus without a holdout. Confirm the wire-repair review remains APPROVE; CHANGES_REQUIRED is never permission to run. Establish readiness for paid comparison from inspectable artifacts and offline checks, without adding a user approval gate. Verify reviewed credential() is used in memory only. After freeze and readiness, run the real full-head canary through the actual Nora runner and consuming branches; verify exact native schemas, fail-fast rejection, baseline/OFF parity, and serial/parallel equivalence in results, recall, failures, and fallbacks. Enable concurrency only where thread safety, rate limits, independence, and stable aggregation are demonstrated. Stop immediately on systematic caller error; preserve all costs and failure evidence. A failed gate blocks repeated comparison until corrected and re-reviewed, with any manifest revision frozen before further inference. Deliver the frozen manifest, canary artifacts, explicit readiness/enablement decisions, and blockers. Use only the assigned worktree and shared serialized Maven helper, inspect scripts, stop owned children, and perform no prohibited operational actions.\n2026-10-12 recovery routing: wait for implementation/review prerequisite t_b5e04bd9. On wake, consume its NEW concrete source/protocol/label evidence. Complete independent exact-source readiness reconciliation and actual diagnostic execution under the existing max3 public-synthetic/2s authority, preserving the failed primary500ms reservation. If corrections remain, route specific implementation findings back to t_b5e04bd9 rather than declare permission absent or create another audit-only child graph. Primary500ms latency/timeouts remain treatment outcomes. Preserve all34 request dispositions including zero eligible J19 current-corpus treatments; unusable J19 cohorts do not block the otherwise reviewed eligible J18 comparison. Only exact-source technical APPROVE enables paid trials. After corrected review/freeze and diagnostic conformance, release the assigned existing comparison t_9e73e975. No self-approved sources, no new user gate, no scope/budget replenishment. Keep original body and all prior evidence. Do not duplicate concurrent source edits/builds.\nOwner terminal branch: an independently verified DO_NOT_RUN_TECHNICAL_INCOMPATIBILITY completes this readiness assessment with comparison_enabled=false and execution_approved=false. Preserve all STOPs, accounting, partial status and immutable protocol. This is not execution approval; no old freeze or diagnostic may run. Available-output quality may proceed ONLY via independently approved, separately versioned partial-label protocol with unchanged rubric and original denominators.",
+      "checks": [
+        {
+          "fresh": false,
+          "kind": "file",
+          "path": "/Users/lilvilla/.hermes/objectives/nora-jev/kb-readiness.json"
+        },
+        {
+          "argv": [
+            "/Users/lilvilla/.hermes/objective-runtime/bin/python",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_readiness_disposition.py",
+            "/Users/lilvilla/.hermes/objectives/nora-jev/kb-readiness.json",
+            "--source-root",
+            "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments",
+            "--required-source",
+            "src/main/java/com/workofo/assistant/service/NoraKbExecutionPermit.java"
+          ],
+          "cwd": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments",
+          "kind": "command",
+          "source_hashes": {
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py": "7c819931e1715fc45ce89543a1adcf9ef582f1ba17e60462c7b5b4b5259d4a59",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_readiness_disposition.py": "db0d41d50b2f8451b8805dd681057e2b2d8f8b47ab7158926e158f59db6c39a4",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_terminal_readiness.py": "b91537c831cb9e3ad2d2e9b1b0c180352fccea4c3ce244da20c5d7f7c2a8bc75"
+          },
+          "timeout": 2
+        }
+      ],
+      "id": "kb-readiness",
+      "task_id": "t_3eb7ee2f",
+      "title": "Verify executable readiness or a source-bound terminal stop",
+      "workspace_kind": "dir",
+      "workspace_path": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments"
+    },
+    {
+      "after": [
+        "kb-readiness"
+      ],
+      "body": "Execute the frozen comparison for task t_89e233f4 only after the upstream readiness and canary gates pass. Use the actual Nora runner and saved historical-request/current-native-response corpus, preserving original failures and keeping query generation and answer reasoning intact. Complete repeated paired outputs for unchanged Nora, deterministic controls with serial/approved parallel scheduling, relevant same-model simple classification, and Jev under frozen budgets. Isolate scheduling gains from classifier gains using otherwise identical arms. Measure observed end-to-end critical paths, not sums of parallel spans. Separately label reused constructions, reconstructed timing/cost, fresh observed work, and unknown cost; never call reconstructed charges fresh observed whole-turn latency. Preserve every failure, fallback, unsupported case, and charge, including canary costs. Obtain Astra evidence-grounded blind quality labels under the frozen rubric, hiding arm identity and recording blinding limitations; do not use Qwen/Laya, a holdout, or a user gate. Report paired quality, latency, and cost differences with uncertainty and limits, including negative results. Stop on systematic caller error and retain partial evidence without presenting it as complete. Use reviewed credential() in memory only, remain in the assigned worktree, inspect scripts, use the shared serialized Maven helper, stop owned children, and make no prohibited operational changes.\nAfter terminal negative readiness, retain/report partial evidence only: no trial or diagnostic execution without NEW independently approved executable freeze under unchanged cumulative numerical ceilings. Available-output quality requires separately approved partial evaluation; task completion never changes the native execution permit.",
+      "checks": [
+        {
+          "fresh": false,
+          "kind": "file",
+          "path": "/Users/lilvilla/.hermes/objectives/nora-jev/kb-comparison.json"
+        },
+        {
+          "argv": [
+            "/Users/lilvilla/.hermes/objective-runtime/bin/python",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py",
+            "/Users/lilvilla/.hermes/objectives/nora-jev/kb-comparison.json",
+            "comparison",
+            "--source-root",
+            "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments",
+            "--required-source",
+            "src/main/java/com/workofo/assistant/service/NoraKbExecutionPermit.java"
+          ],
+          "cwd": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments",
+          "kind": "command",
+          "source_hashes": {
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py": "7c819931e1715fc45ce89543a1adcf9ef582f1ba17e60462c7b5b4b5259d4a59"
+          },
+          "timeout": 1
+        }
+      ],
+      "id": "kb-comparison",
+      "task_id": "t_9e73e975",
+      "title": "Run repeated paired comparisons and blind quality evaluation",
+      "workspace_kind": "dir",
+      "workspace_path": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-kb-experiments"
+    },
+    {
+      "after": [],
+      "body": "Integrate the J08/J09/J33 and J10/J16 implementations into an executable paired comparison harness using the preparation manifest. Review the implementations independently against the original assessment, parent R1 review, and logs/jev-implementation-review-config/REVIEW.txt. Verify actual early replacements in ConfiguredBehaviorExplanationPlaybookRunner, downstream consumption, legitimate alternatives, fallback and final answers, objective fail-closed tests, baseline parity, and rollback. Before any inference, freeze a versioned protocol containing numerical budgets, all qualifying historical development requests, separately identified challenge fixtures, case origins, expected obligations, strongest deterministic and simple LLM controls, J10 targeted same-LLM controls, J09 recall controls, Astra evidence-grounded blinded assessment, and full accounting including fallback, retries, corrections, failures, and evaluator overhead. Define paired execution, repeat policy, blinded artifacts, and checkpoint versus whole-loop metrics. Use non-paid dry runs to validate harness operation. Require an explicit R1 APPROVE tied to the exact source snapshot and frozen protocol; any completed CHANGES_REQUIRED review must be corrected and independently re-reviewed before paid trials. Do not relabel an unresolved review as approval. Preserve review rounds and previous evidence. Work only in the assigned tree, read scripts before execution, use the shared serialized heavy-build helper, stop owned tests, and make no production writes, notifications, deployment, service restarts, GUI-terminal use, or global dependency changes. Acceptance: executable harness, frozen protocol and snapshots, objective validation, and explicit R1 APPROVE; otherwise leave a durable blocking checkpoint.",
+      "checks": [
+        {
+          "fresh": false,
+          "kind": "file",
+          "path": "/Users/lilvilla/.hermes/objectives/nora-jev/config-integration.json"
+        },
+        {
+          "argv": [
+            "/Users/lilvilla/.hermes/objective-runtime/bin/python",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py",
+            "/Users/lilvilla/.hermes/objectives/nora-jev/config-integration.json",
+            "readiness",
+            "--source-root",
+            "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-config-experiments",
+            "--required-source",
+            "src/main/java/com/workofo/assistant/service/ConfiguredBehaviorExplanationPlaybookRunner.java"
+          ],
+          "cwd": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-config-experiments",
+          "kind": "command",
+          "source_hashes": {
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py": "7c819931e1715fc45ce89543a1adcf9ef582f1ba17e60462c7b5b4b5259d4a59"
+          },
+          "timeout": 1
+        }
+      ],
+      "id": "config-integration",
+      "task_id": "t_a27db9c0",
+      "title": "Integrate the paired harness and secure R1 approval before inference",
+      "workspace_kind": "dir",
+      "workspace_path": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-config-experiments"
+    },
+    {
+      "after": [
+        "config-integration"
+      ],
+      "body": "Execute the integrated harness only after verifying explicit R1 APPROVE for the exact source snapshot and frozen protocol; CHANGES_REQUIRED or material unreviewed changes block paid trials. Follow the frozen budgets, origins, obligations, controls, and paired execution design without post-hoc substitution. Run all useful eligible J08, J09, J10, J16, and J33 interventions across all qualifying historical development requests and separately report challenge fixtures. Use Astra for evidence-grounded blinded answer assessment. Use authorized OpenRouter access exclusively through the reviewed credential() path; never print or persist its key. Do not use Qwen/Laya, holdout data, or manual user review. Preserve raw traces, failures, source snapshots, review evidence, and earlier results. Produce paired quality, latency, cost, reliability, and operational results with complete accounting for controls, retries, fallbacks, corrections, failed attempts, and assessment overhead. Cite pre-decision inputs, omitted work, and actual downstream consumption for each lane. Explicitly distinguish checkpoint measurements from whole-loop measurements, and CURRENT evidence comparisons from unknowable historical counterfactual truth. Explain every remaining ineligible case using concrete missing input or failure. Validate rollback in isolated test seams and document reproducible commands. If staged execution is necessary, checkpoint durably and identify unfinished obligations; synthetic validity or helper tests alone do not complete the card. Read scripts before execution, use the shared serialized heavy-build helper, stop owned tests, and remain in the assigned tree without production writes, notifications, deployment, service restarts, GUI terminals, or global dependencies. Acceptance: reproducible executable harness, preserved paired trial artifacts, complete results report, and tested rollback, ready for independent review.",
+      "checks": [
+        {
+          "fresh": false,
+          "kind": "file",
+          "path": "/Users/lilvilla/.hermes/objectives/nora-jev/config-comparison.json"
+        },
+        {
+          "argv": [
+            "/Users/lilvilla/.hermes/objective-runtime/bin/python",
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py",
+            "/Users/lilvilla/.hermes/objectives/nora-jev/config-comparison.json",
+            "comparison",
+            "--source-root",
+            "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-config-experiments",
+            "--required-source",
+            "src/main/java/com/workofo/assistant/service/ConfiguredBehaviorExplanationPlaybookRunner.java"
+          ],
+          "cwd": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-config-experiments",
+          "kind": "command",
+          "source_hashes": {
+            "/Users/lilvilla/dotfiles/hermes/objectives/verify_evidence.py": "7c819931e1715fc45ce89543a1adcf9ef582f1ba17e60462c7b5b4b5259d4a59"
+          },
+          "timeout": 1
+        }
+      ],
+      "id": "config-comparison",
+      "task_id": "t_0943a5e2",
+      "title": "Run approved paired trials and publish full-loop results and rollback",
+      "workspace_kind": "dir",
+      "workspace_path": "/Users/lilvilla/Programming/workofo/scheduleplanner/.worktrees/nora-jev-config-experiments"
+    }
+  ],
+  "stale_seconds": 1800
+}
